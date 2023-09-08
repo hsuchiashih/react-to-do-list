@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from 'axios';
 import { useNavigate } from "react-router-dom"
+import Swal from "sweetalert2";
 
 function Login() {
   const { VITE_APP_SITE } = import.meta.env;
@@ -23,17 +24,15 @@ function Login() {
       const tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
       document.cookie = `todoToken=${token}; expires=${tomorrow.toUTCString()}`;
-      
-      console.log(
-        document.cookie
-          .split('; ')
-          .find((row) => row.startsWith('todoToken')),
-      );
-
       navigate('/todo')
-      // console.log(response);
       
     } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: '登入失敗',
+        text: error.response.data.message,
+        showConfirmButton: true
+      });
       console.log(error);
       
     }

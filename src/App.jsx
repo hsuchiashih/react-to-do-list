@@ -5,6 +5,7 @@ import Login from './views/Login'
 import Todo from './views/Todo'
 import NotFound from './views/NotFound'
 import { useState, useEffect } from "react"
+import { HashRouter } from 'react-router-dom'
 function App() {
   const [token, setToken] = useState('');
   const todoToken = document.cookie
@@ -18,7 +19,7 @@ function App() {
     }, []);
 
   return (
-    <div>
+    <HashRouter>
       <Routes>
         <Route path="/auth" element={ <Auth/> }>
           <Route path="login" element={ <Login/> }/>
@@ -27,7 +28,7 @@ function App() {
         <Route path="/todo" element={ <Todo token={token}/> }/>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
-    </div>
+    </HashRouter>
   )
 }
 
