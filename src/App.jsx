@@ -4,20 +4,8 @@ import SignUp from './views/SignUp'
 import Login from './views/Login'
 import Todo from './views/Todo'
 import NotFound from './views/NotFound'
-import { useState, useEffect } from "react"
 import { HashRouter } from 'react-router-dom'
 function App() {
-  const [token, setToken] = useState('');
-  const todoToken = document.cookie
-    .split('; ')
-    .find((row) => row.startsWith('todoToken='))
-    ?.split('=')[1];
-    useEffect(() => {
-      if (todoToken) {
-        setToken(todoToken);
-      }
-    }, []);
-
   return (
     <HashRouter>
       <Routes>
@@ -25,7 +13,7 @@ function App() {
           <Route path="" element={ <Login/> }/>
           <Route path="sign_up" element={ <SignUp/> }/>
         </Route>
-        <Route path="/todo" element={ <Todo token={token}/> }/>
+        <Route path="/todo" element={ <Todo/> }/>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </HashRouter>

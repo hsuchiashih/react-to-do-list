@@ -24,8 +24,7 @@ function Login() {
       const tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
       document.cookie = `todoToken=${token}; expires=${tomorrow.toUTCString()}`;
-      navigate('/todo')
-      
+      setTimeout(() => {navigate('/todo')}, 1000)
     } catch (error) {
       Swal.fire({
         icon: 'error',

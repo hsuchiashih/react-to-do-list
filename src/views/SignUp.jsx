@@ -19,7 +19,7 @@ function SignUp() {
         icon: 'success',
         title: '註冊成功'
       });
-      navigate('/auth/login')
+      navigate('/')
     } catch (error) {
       Swal.fire({
         icon: 'error',

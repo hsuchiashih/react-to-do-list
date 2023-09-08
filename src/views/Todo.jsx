@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 import Swal from "sweetalert2";
 import axios from 'axios';
 import '../../src/Auth.css'
-function Todo({ token }) {
+function Todo() {
     const { VITE_APP_SITE } = import.meta.env;
     const navigate = useNavigate();
     const [todoList, setTodoList] = useState([]);
@@ -14,7 +14,10 @@ function Todo({ token }) {
     const [toggleState, setToggleState] = useState('全部');
     const [finishedCount, setFinishedCountState] = useState(0);
     const [nickname, setNickNameState] = useState('');
-
+    const token = document.cookie
+    .split('; ')
+    .find((row) => row.startsWith('todoToken='))
+    ?.split('=')[1];
     useEffect(() => {
         checkOut();
         getTodos();
