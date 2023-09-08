@@ -542,6 +542,12 @@ nav ul a span {
   text-align: center;
   padding: 30px;
 }
+
+.empty_container .empty_text .text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
 .empty_container .empty_img {
   width: 70%;
   margin: auto;

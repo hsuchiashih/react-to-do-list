@@ -9,6 +9,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [isEmpty, setIsEmpty] = useState(true);
   const navigate = useNavigate();
+
   useEffect(() => {
     if (email.length > 0) {
       setIsEmpty(false);
