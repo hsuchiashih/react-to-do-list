@@ -21,8 +21,8 @@ function App() {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/auth" element={ <Auth/> }>
-          <Route path="login" element={ <Login/> }/>
+        <Route path="/" element={ <Auth/> }>
+          <Route path="" element={ <Login/> }/>
           <Route path="sign_up" element={ <SignUp/> }/>
         </Route>
         <Route path="/todo" element={ <Todo token={token}/> }/>
