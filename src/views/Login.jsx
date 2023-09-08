@@ -39,7 +39,7 @@ function Login() {
   }
 
   const toSignUpPage = () => {
-    navigate('/auth/sign_up')
+    navigate('/sign_up')
   }
 
   return (

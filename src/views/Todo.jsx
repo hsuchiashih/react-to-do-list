@@ -38,7 +38,7 @@ function Todo({ token }) {
                 icon: 'error',
                 title: 'token已過期，請重新登入'
             });
-            navigate('/auth/login')
+            navigate('/')
             console.log(error);
         }
     }
@@ -58,7 +58,7 @@ function Todo({ token }) {
                 text: '',
                 showConfirmButton: true
             });
-            navigate('/auth/login')
+            navigate('/')
         } catch (error) {
             console.log('登出失敗', error);
         }
@@ -79,7 +79,6 @@ function Todo({ token }) {
             setTodoList(response.data.data)
             setFinishedCountState(count)
         } catch (error) {
-            // navigate('/auth/login')
             console.log(error);
         }
     };

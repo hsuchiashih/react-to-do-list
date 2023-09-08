@@ -31,7 +31,7 @@ function SignUp() {
     }
   }
   const toLoginPage = () => {
-    navigate('/auth/login')
+    navigate('/')
   }
   return (
     <div>
