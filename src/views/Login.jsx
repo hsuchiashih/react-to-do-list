@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import { useNavigate } from "react-router-dom"
 import Swal from "sweetalert2";
 
 function Login() {
@@ -16,6 +16,8 @@ function Login() {
       setIsEmpty(true);
     }
    }, [email]);
+
+  // 登入功能 
   const signIn = async () => {
     const params = {email, password}
     try {

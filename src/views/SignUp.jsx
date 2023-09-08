@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import { useNavigate } from "react-router-dom"
 import Swal from "sweetalert2";
 
 function SignUp() {
@@ -11,6 +11,7 @@ function SignUp() {
   const [nickname, setNickname] = useState('');
   const navigate = useNavigate();
 
+  // 註冊功能
   const signUp = async () => {
     const params = { email, password, nickname }
     try {

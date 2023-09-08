@@ -1,7 +1,8 @@
-import { Outlet } from "react-router-dom"
-import '../../src/Auth.css'
-import logo from '../../src/assets/logo.png'
-import mainPageImg from '../../src/assets/mainPageImg.png'
+import { Outlet } from "react-router-dom";
+import logo from '../../src/assets/logo.png';
+import mainPageImg from '../../src/assets/mainPageImg.png';
+import '../../src/css/Auth.css';
+
 function Auth() {
   return (
     <div id="loginPage" className="bg-yellow">

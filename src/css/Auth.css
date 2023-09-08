@@ -533,4 +533,17 @@ nav ul a span {
   background: transparent;
   padding: 0 0.5rem;
 }
+
+.empty_container {
+  text-align: center;
+}
+.empty_container .empty_text {
+  width: 100%;
+  text-align: center;
+  padding: 30px;
+}
+.empty_container .empty_img {
+  width: 70%;
+  margin: auto;
+}
 /*# sourceMappingURL=all.css.map */

@@ -1,11 +1,12 @@
-import { useState, useEffect, useMemo } from "react"
-import logo from '../../src/assets/logo.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons'
-import { useNavigate } from "react-router-dom"
+import { useState, useEffect, useMemo } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from 'axios';
-import '../../src/Auth.css'
+import logo from '../../src/assets/logo.png';
+import empty from '../../src/assets/empty.png';
+import '../../src/css/Auth.css'
 function Todo() {
     const { VITE_APP_SITE } = import.meta.env;
     const navigate = useNavigate();
@@ -14,6 +15,7 @@ function Todo() {
     const [toggleState, setToggleState] = useState('全部');
     const [finishedCount, setFinishedCountState] = useState(0);
     const [nickname, setNickNameState] = useState('');
+		const [nothingTodo, setNothingTodoState] = useState(false);
     const token = document.cookie
     .split('; ')
     .find((row) => row.startsWith('todoToken='))
@@ -78,9 +80,11 @@ function Todo() {
             }
 
             const response = await axios.get(`${VITE_APP_SITE}/todos/`, config);
-            const count = response.data.data.filter(item => item.status === true).length
+            const finishedCount = response.data.data.filter(item => item.status === true).length
+						const todoItemCount = response.data.data.length === 0
             setTodoList(response.data.data)
-            setFinishedCountState(count)
+            setFinishedCountState(finishedCount)
+						setNothingTodoState(todoItemCount)
         } catch (error) {
             console.log(error);
         }
@@ -199,6 +203,17 @@ function Todo() {
                             <FontAwesomeIcon icon={faPlus} />
                         </button>
                     </div>
+										{nothingTodo &&
+											<div className="empty_container">
+												<div className="empty_text">
+													<span>目前尚無代辦事項</span>
+												</div>
+												<div className="empty_img">
+													<img src={empty}  alt="empty_img"/>
+												</div>
+											</div>
+										}
+										{!nothingTodo &&
                     <div className="todoList_list">
                         <ul className="todoList_tab">
                             <li><div className={toggleState === '全部' ? 'active' : ''} onClick={(e) => changeStatus(e)}>全部</div></li>
@@ -226,6 +241,7 @@ function Todo() {
                             </div>
                         </div>
                     </div>
+										}
                 </div>
             </div>
         </div>
